@@ -28,7 +28,7 @@
 | 第 3 课 | 律法 | 法是什么：规则从何而来、法系有几家 | [MD](day-03-法是什么.md) · [HTML](day-03-法是什么.html) | [打开](https://docs.qq.com/aio/DV25zTkZQaUdJRGx4) |
 | 第 4 课 | 政治 | 国家与制度：国家从何而来、政体有几种 | [MD](day-04-国家与制度.md) · [HTML](day-04-国家与制度.html) | [打开](https://docs.qq.com/aio/DV1pweXpXVWRzTnJq) |
 | 第 5 课 | 经济 | 供需与价格：无形的手如何定价 | [MD](day-05-供需与价格.md) · [HTML](day-05-供需与价格.html) | [打开](https://docs.qq.com/aio/DV2ZKR2h6VUpadW51?_fid=WfJGhzUJZunu) |
-| 第 6 课 | 律法 | 宪法：根本法与合宪性审查 | 待发布 | — |
+| 第 6 课 | 律法 | 宪法：根本法与合宪性审查 | [MD](day-06-宪法.md) · [HTML](day-06-宪法.html) | [打开](https://docs.qq.com/aio/DV2FNQXBZbGVZTnNV) |
 | 第 7 课 | 政治 | 宪法与公民权利：根本法如何守护你 | 待发布 | — |
 | 第 8 课 | 经济 | 市场与失灵：为什么有时候市场不灵 | 待发布 | — |
 | 第 9 课 | 律法 | 民法·合同：白纸黑字的约束力 | 待发布 | — |
