@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 9 课 · 律法 · 民法·合同</title>
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --secondary: #6c757d;
+      --success: #198754;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --card-radius: 12px;
+      --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.7; color: var(--dark); background: #f0f2f5; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: var(--card-radius); margin-bottom: 20px; text-align: center; }
+    .header h1 { font-size: 1.8em; margin-bottom: 10px; }
+    .header .subtitle { opacity: 0.9; font-size: 0.95em; }
+    .tag-row { display: flex; gap: 8px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+    .tag { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.85em; }
+    .card { background: white; border-radius: var(--card-radius); padding: 24px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+    .card h2 { color: var(--primary); font-size: 1.3em; margin-bottom: 16px; border-left: 4px solid var(--primary); padding-left: 12px; }
+    .card h3 { color: var(--dark); font-size: 1.1em; margin: 20px 0 12px; }
+    .card p { margin-bottom: 12px; }
+    .core-box { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: var(--card-radius); padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
+    .core-box blockquote { font-size: 1.1em; color: var(--dark); }
+    .term-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+    .term-card { background: var(--light); padding: 16px; border-radius: 8px; border: 1px solid #e9ecef; }
+    .term-card strong { color: var(--primary); display: block; margin-bottom: 6px; }
+    .term-card .en { color: var(--secondary); font-size: 0.85em; font-style: italic; }
+    .term-card .tip { margin-top: 8px; font-size: 0.9em; color: #495057; background: #fff3cd; padding: 6px 10px; border-radius: 4px; }
+    .knowledge-card { background: var(--light); padding: 20px; border-radius: 8px; margin-bottom: 16px; }
+    .knowledge-card h4 { color: var(--primary); margin-bottom: 12px; font-size: 1.05em; }
+    .knowledge-card ul { padding-left: 20px; }
+    .knowledge-card li { margin-bottom: 8px; }
+    .case-label { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; margin-right: 6px; }
+    .case-life { background: #e8f5e9; color: #2e7d32; }
+    .case-news { background: #fff3e0; color: #e65100; }
+    .case-system { background: #e3f2fd; color: #1565c0; }
+    .case-block { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 14px; border-left: 3px solid #dee2e6; }
+    .case-block h4 { margin-bottom: 10px; }
+    .highlight-box { background: #fff8e1; padding: 16px; border-radius: 8px; margin: 16px 0; }
+    .highlight-box strong { color: #f57f17; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+    th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; }
+    td { padding: 10px 12px; border-bottom: 1px solid #dee2e6; }
+    tr:hover { background: #f8f9fa; }
+    .book-card { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #e9ecef; }
+    .book-card .title { font-weight: bold; color: var(--dark); margin-bottom: 6px; }
+    .book-card .author { color: var(--secondary); font-size: 0.9em; margin-bottom: 6px; }
+    .book-card .chapters { color: var(--primary); font-size: 0.85em; }
+    .summary-table td:first-child { font-weight: bold; background: #f8f9fa; width: 30%; }
+    .qa-item { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 14px; }
+    .qa-item .q { font-weight: bold; color: var(--dark); margin-bottom: 10px; }
+    .qa-item details { margin-top: 8px; }
+    .qa-item summary { cursor: pointer; color: var(--primary); font-weight: bold; padding: 8px 12px; background: #e8f4f8; border-radius: 6px; list-style: none; }
+    .qa-item summary::-webkit-details-marker { display: none; }
+    .qa-item details[open] summary { border-radius: 6px 6px 0 0; }
+    .qa-item .answer { padding: 12px; background: #e8f4f8; border-radius: 6px; margin-top: 2px; }
+    .next-preview { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: var(--card-radius); text-align: center; }
+    .next-preview h3 { margin-bottom: 12px; }
+    .next-preview .meta { opacity: 0.9; font-size: 0.9em; }
+    .footer-note { text-align: center; color: var(--secondary); font-size: 0.85em; padding: 20px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>第 9 课 · 律法 · 民法·合同</h1>
+      <div class="subtitle">白纸黑字的约束力</div>
+      <div class="tag-row">
+        <span class="tag">政经法零基础日课</span>
+        <span class="tag">9 / 24</span>
+        <span class="tag">第3轮 · 律法</span>
+        <span class="tag">2026年8月26日</span>
+        <span class="tag"><a href="https://docs.qq.com/aio/DV2ZobGtJd0JwbFhu" target="_blank" style="color:white;text-decoration:none;">腾讯文档</a></span>
+      </div>
+    </div>
+
+    <div class="core-box">
+      <blockquote>合同就是"说话算数"的法律版本——要约遇上承诺，合同即告成立；但成立不等于有效，有效不等于不会被违反——每一步都有规则。</blockquote>
+    </div>
+
+    <div class="card">
+      <h2>📖 专业名词解释</h2>
+      <div class="term-grid">
+        <div class="term-card">
+          <strong>要约</strong>
+          <span class="en">Offer</span>
+          <p>"我出价，你接不接？"——一方明确表示愿意按特定条件成交，等对方点头</p>
+        </div>
+        <div class="term-card">
+          <strong>承诺</strong>
+          <span class="en">Acceptance</span>
+          <p>"成交！"——对方完全同意要约的条件，合同此刻成立</p>
+        </div>
+        <div class="term-card">
+          <strong>合同效力</strong>
+          <span class="en">Contract Validity</span>
+          <p>合同的"体检报告"——有的健康（有效），有的天生畸形（无效），有的可以被撤销（可撤销）</p>
+        </div>
+        <div class="term-card">
+          <strong>违约责任</strong>
+          <span class="en">Liability for Breach</span>
+          <p>"说话不算数要付出代价"——不履行合同义务要赔偿</p>
+        </div>
+        <div class="term-card">
+          <strong>定金</strong>
+          <span class="en">Deposit</span>
+          <p>"诚意金"——先交一笔钱表示认眞；违约时，交定金的拿不回，收定金的双倍还</p>
+        </div>
+      </div>
+      <div class="highlight-box">
+        <strong>记忆口诀：</strong>合同三步走——<strong>成立（要约+承诺）→ 效力（有效/无效/可撤销）→ 责任（违约要赔）</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🧠 知识点（连贯主线）</h2>
+
+      <div class="knowledge-card">
+        <h4>1. 合同怎么"成立"——要约与承诺的"握手"</h4>
+        <p>合同成立的核心逻辑极其简单：<strong>一方发出要约，另一方作出承诺，合同即告成立</strong>。</p>
+        <ul>
+          <li><strong>要约（Offer）</strong>：一方向另一方发出的、内容具体确定、表明受要约人承诺即受其约束的意思表示。<br>通俗说："我以 5000 元卖你这台手机，你要不要？"</li>
+          <li><strong>承诺（Acceptance）</strong>：受要约人同意要约的意思表示。<br>通俗说："成交！"<br>关键规则：承诺必须与要约内容一致。如果承诺时加了新条件（如"5000 卖我，但包邮"），这在法律上叫<strong>新要约（反要约）</strong>，原要约失效。</li>
+          <li><strong>要约邀请（Invitation to Offer）</strong>：招标公告、商品标价展示、商业广告等——它们不是要约，而是"邀请你来发要约"。<br>超市货架上标价 5 元的矿泉水 ≠ 要约；你拿去收银台付款 = 你发出要约，收银员扫码 = 承诺。</li>
+        </ul>
+        <p><strong>民法典依据</strong>：第 472 条（要约定义）、第 479 条（承诺定义）、第 483 条（承诺生效时合同成立）。</p>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>2. 合同的"效力"——有效、无效、可撤销</h4>
+        <p>合同成立了，不等于它一定有效。效力有四档：</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>效力状态</th><th>含义</th><th>典型情形</th></tr>
+            <tr><td><strong>有效</strong></td><td>依法成立，受法律保护</td><td>双方真实意思、内容合法、形式合规</td></tr>
+            <tr><td><strong>无效</strong></td><td>自始不产生法律约束力</td><td>违反法律强制性规定、违背公序良俗、虚假意思表示</td></tr>
+            <tr><td><strong>可撤销</strong></td><td>一方有权请求法院/仲裁机构撤销</td><td>欺诈、胁迫、重大误解、显失公平</td></tr>
+            <tr><td><strong>效力待定</strong></td><td>效力尚未确定，需第三人追认</td><td>限制民事行为能力人签订的合同、无权代理</td></tr>
+          </table>
+        </div>
+        <p><strong>关键区分——"无效" vs "可撤销"</strong>：</p>
+        <ul>
+          <li>无效合同是"天生无效"，不需要谁去申请，法院主动认定。</li>
+          <li>可撤销合同在撤销前是<strong>有效的</strong>！只有当事人主动行使撤销权后才归于无效。而且撤销权有<strong>时间限制</strong>：通常自知道或应当知道撤销事由之日起 <strong>1 年</strong>内行使（民法典第 152 条）。</li>
+        </ul>
+        <p><strong>民法典依据</strong>：第 143 条（有效条件）、第 144–146 条（无效情形）、第 147–151 条（可撤销情形）、第 152 条（撤销权期间）。</p>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>3. 违约责任——签了不履行怎么办</h4>
+        <p>合同有效，但一方不履行或不完全履行，就构成<strong>违约</strong>。违约责任的承担方式有四种：</p>
+        <ul>
+          <li><strong>继续履行</strong>：法院判令违约方继续完成合同义务（如交付约定商品）。</li>
+          <li><strong>采取补救措施</strong>：修理、更换、重作、退货、减少价款等。</li>
+          <li><strong>赔偿损失</strong>：赔偿因违约造成的直接损失和合同履行后可以获得的利益（可预见规则）。</li>
+          <li><strong>支付违约金</strong>：合同约定的违约金。约定过高（超过实际损失 30%）可请求法院调低；约定过低可请求调高。</li>
+        </ul>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>4. 定金与违约金——"双保险"只能选一个</h4>
+        <p>很多合同同时约定了定金和违约金。民法典第 588 条规定：<strong>一方违约时，对方可以选择适用违约金或者定金条款，但二者不能同时叠加</strong>。</p>
+        <ul>
+          <li>选定金：交定金方违约→定金不退；收定金方违约→双倍返还定金。</li>
+          <li>选违约金：按合同约定的违约金数额主张。</li>
+          <li>选择标准：哪个金额更高、对守约方更有利就选哪个。</li>
+        </ul>
+        <p><strong>民法典依据</strong>：第 577 条（违约责任的一般条款）、第 585 条（违约金）、第 587–588 条（定金）。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔍 由浅入深案例</h2>
+
+      <div class="case-block">
+        <h4><span class="case-label case-life">生活场景</span> 网购下单，合同什么时候"成立"？</h4>
+        <p><strong>场景</strong>：你在淘宝看到一双鞋，标价 399 元。你点击"立即购买"→ 填写地址 → 付款 399 元。第二天商家说"抱歉，价格标错了，应该是 3990 元，我们不发货"。</p>
+        <p><strong>分析</strong>：</p>
+        <ul>
+          <li>商品标价展示 = <strong>要约邀请</strong>（不是要约）</li>
+          <li>你下单付款 = 你发出 <strong>要约</strong></li>
+          <li>商家确认订单 = <strong>承诺</strong>，合同在此刻成立</li>
+          <li>合同成立后，商家单方说"不卖了" = <strong>违约</strong></li>
+        </ul>
+        <p><strong>法律依据</strong>：民法典第 491 条规定，当事人一方通过互联网等信息网络发布的商品信息符合要约条件的，对方选择该商品并提交订单成功时合同成立。</p>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-news">真实新闻</span> 最高法 2023 年典型案例：招投标中标后反悔</h4>
+        <p><strong>新闻来源</strong>：最高人民法院，2023 年 12 月 5 日发布《关于适用〈中华人民共和国民法典〉合同编通则若干问题的解释》十起典型案例·案例一</p>
+        <p><strong>事件经过</strong>：</p>
+        <p>2021 年 7 月 8 日，某研究所委托招标公司就宿舍项目公开发出投标邀请。7 月 28 日，某物业管理公司发出投标文件，表示对招标文件无异议。8 月 1 日，招标公司向物业公司送达<strong>中标通知书</strong>。8 月 11 日，研究所致函物业公司，要求"解除中标关系，后续合同不再签订"。</p>
+        <p>物业公司主张：中标通知书送达后租赁合同已成立，研究所应承担违约责任。研究所辩称：双方未签正式书面合同，仅成立预约关系。</p>
+        <p><strong>法院裁判</strong>：</p>
+        <ul>
+          <li>招标行为 = <strong>要约邀请</strong></li>
+          <li>投标行为 = <strong>要约</strong></li>
+          <li>发出中标通知书 = <strong>承诺</strong></li>
+          <li>中标通知书送达投标人时，<strong>承诺生效，合同成立</strong></li>
+        </ul>
+        <p>由于招投标文件对租赁合同内容已有明确记载，双方已就合同内容达成合意。中标后签订的书面合同只是法律要求的确认形式，而非新的合同。研究所不履行合同义务，<strong>应承担违约责任</strong>。</p>
+        <div class="highlight-box">
+          <strong>制度/原理分析：</strong>
+          <ul>
+            <li>这起案件完美展示了要约→承诺→合同成立的完整链条。</li>
+            <li>司法解释第 4 条明确："采取招标方式订立合同，当事人请求确认合同自中标通知书到达中标人时成立的，人民法院应予支持。"</li>
+            <li>关键启示：<strong>合同不一定需要签字盖章才成立</strong>——要约和承诺的"握手"就是成立标志。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-news">真实新闻</span> 宁安市法院房屋买卖卖方违约案：定金与违约金怎么选</h4>
+        <p><strong>新闻来源</strong>：宁安市人民法院（黑龙江省），发布于法院官方公众号</p>
+        <p><strong>事件经过</strong>：</p>
+        <p>2023 年 11 月 7 日，姚某与王某签订房屋买卖合同。姚某支付定金 60000 元，同年 11 月 19 日支付购房款 500000 元，双方约定 2024 年 5 月 19 日前完成过户。约定日期过后，王某既不交付房屋也不退还购房款。姚某起诉，要求解除合同、返还 560000 元并支付利息损失和违约金共 100000 元。</p>
+        <p><strong>法院裁判</strong>：</p>
+        <ul>
+          <li>合同是双方真实意思表示，<strong>合法有效</strong>。</li>
+          <li>王某无正当理由未按期交房，<strong>构成违约</strong>。</li>
+          <li>根据<strong>民法典第 588 条</strong>："当事人既约定违约金，又约定定金的，一方违约时，对方可以选择适用违约金或者定金条款。"</li>
+          <li>法院判决：解除合同 + 返还 560000 元 + 支付利息损失和违约金 100000 元。</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>制度/原理分析：</strong>
+          <ul>
+            <li>本案展示了<strong>违约责任的完整适用</strong>：解除合同 + 返还财产 + 赔偿损失。</li>
+            <li>定金（60000 元）和违约金（100000 元）同时约定时，守约方选择了违约金条款。</li>
+            <li>法律不允许"既要违约金又要双倍定金"——防止单一违约被重复惩罚。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-news">真实新闻</span> 网购"假一赔十"案：欺诈撤销与惩罚性赔偿</h4>
+        <p><strong>新闻来源</strong>：湖北高院发布，宜昌市夷陵区人民法院审理，2023 年</p>
+        <p><strong>事件经过</strong>：</p>
+        <p>2023 年 11 月 25 日，胡某在某网络购物平台花费 780 元购买一台标注"全新"的品牌手机，商品详情页标注"假一赔十"。收到手机后，胡某发现 SN 码不符，官网查询保修期已到期（2022 年 6 月 21 日），经品牌授权服务中心检测：私拆、屏幕非原装。</p>
+        <p>胡某起诉，要求退还 780 元并支付十倍赔偿金 7800 元。</p>
+        <p><strong>法院裁判</strong>：</p>
+        <ul>
+          <li>严某交付的手机并非正品全新手机，不符合约定，<strong>构成根本违约</strong>。</li>
+          <li>严某的销售行为<strong>构成欺诈</strong>——明知非正品而以正品出售，使胡某基于错误认识购买。</li>
+          <li>"假一赔十"的承诺是销售者自愿做出的高于法定标准的承诺，属于<strong>信息网络买卖合同的内容</strong>，严某应履行。</li>
+          <li>判决：返还货款 780 元 + 支付赔偿金 7800 元。</li>
+        </ul>
+        <div class="table-wrap">
+          <table>
+            <tr><th>层次</th><th>法律依据</th><th>分析</th></tr>
+            <tr><td>合同效力</td><td>民法典第 148 条</td><td>欺诈导致合同可撤销——但胡某选择了解除合同+索赔</td></tr>
+            <tr><td>违约责任</td><td>民法典第 577 条</td><td>交付的标的物不符合约定，构成根本违约</td></tr>
+            <tr><td>惩罚性赔偿</td><td>消费者权益保护法第 55 条</td><td>经营者欺诈，消费者可主张价款三倍赔偿</td></tr>
+            <tr><td>合同承诺</td><td>民法典第 509 条</td><td>"假一赔十"是商家自愿承诺，构成合同条款</td></tr>
+          </table>
+        </div>
+        <div class="highlight-box">
+          <strong>本案精妙之处：</strong>消费者没有止步于法定的"退一赔三"（780×3=2340 元），而是主张了商家承诺的"假一赔十"（780×10=7800 元），法院予以支持——<strong>合同约定优先于法定最低标准</strong>。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📚 延伸阅读推荐</h2>
+
+      <div class="book-card">
+        <div class="title">《民法思维：请求权基础理论体系》</div>
+        <div class="author">作者：王泽鉴 | 出版社：北京大学出版社</div>
+        <div class="chapters">📖 必读章节：第 1 章"民法请求权基础体系"、第 2 章"请求权基础——合同关系"</div>
+        <p style="margin-top:10px;font-size:0.9em;">推荐理由：王泽鉴先生的经典入门教材，用"请求权基础"方法串联整个民法体系。第 1–2 章专门讲合同关系如何产生请求权，帮助你理解"合同成立→有效→违约→请求赔偿"的逻辑链条。</p>
+      </div>
+
+      <div class="book-card">
+        <div class="title">《合同法》</div>
+        <div class="author">作者：崔建远 | 出版社：法律出版社</div>
+        <div class="chapters">📖 推荐章节：第三章"合同的成立"、第六章"合同的效力"、第十六章"违约责任"</div>
+        <p style="margin-top:10px;font-size:0.9em;">推荐理由：崔建远教授是国内合同法领域的权威学者之一。本书体系完整、论述详实，对合同成立、效力、违约责任三大核心问题有深入分析。适合学完本课后想深入了解合同法全貌的读者。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📋 当日小结</h2>
+      <div class="table-wrap">
+        <table class="summary-table">
+          <tr><td>合同成立</td><td>要约（"我出价"）+ 承诺（"成交"）= 合同成立；不需要签字盖章才算</td></tr>
+          <tr><td>合同效力</td><td>四档：有效 / 无效 / 可撤销 / 效力待定；可撤销须 1 年内行使撤销权</td></tr>
+          <tr><td>违约责任</td><td>四种方式：继续履行 / 补救措施 / 赔偿损失 / 支付违约金</td></tr>
+          <tr><td>定金 vs 违约金</td><td>同时约定时只能选一个，哪个对守约方更有利选哪个</td></tr>
+          <tr><td>欺诈与惩罚赔偿</td><td>商家欺诈→消费者可主张"退一赔三"；商家自愿承诺"假一赔十"→按合同约定履行</td></tr>
+          <tr><td>核心案例</td><td>最高法 2023 典型案例——招投标中要约/承诺/合同成立的活教材</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✅ 自测题</h2>
+
+      <div class="qa-item">
+        <div class="q"><strong>1.</strong> 超市货架上标价 5 元的矿泉水，顾客拿去收银台付款。下列说法正确的是？<br>A. 货架标价是要约，顾客付款是承诺，合同在付款时成立<br>B. 货架标价是要约邀请，顾客拿商品去付款是要约，收银员扫码是承诺<br>C. 货架标价是承诺，顾客付款是要约<br>D. 合同在顾客进入超市时就成立了</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <strong>正确答案：B</strong><br><br>
+            货架上的商品标价展示属于<strong>要约邀请</strong>（民法典第 473 条），不是要约。顾客拿商品到收银台表示购买 = 发出<strong>要约</strong>，收银员扫描商品并收取价款 = <strong>承诺</strong>，合同此时成立。<br><br>
+            <strong>记忆点</strong>：要约邀请 ≠ 要约。招标公告、商品标价、商业广告通常是要约邀请——它们是"邀请你来发要约"，而不是要约本身。
+          </div>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="q"><strong>2.</strong> 民法典第 588 条规定"当事人既约定违约金，又约定定金的，一方违约时，对方可以选择适用违约金或者定金条款"。为什么法律不允许同时叠加适用？</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <strong>核心原因：防止单一违约被重复惩罚（禁止双重救济）</strong>。<br><br>
+            <ul>
+              <li>定金本身具有惩罚性：交定金方违约→定金不退；收定金方违约→双倍返还。</li>
+              <li>违约金也具有赔偿和惩罚双重功能。</li>
+              <li>如果同时叠加，守约方可能获得的赔偿远超实际损失，违背了"赔偿以填补损失为原则"的民法精神。</li>
+            </ul>
+            <br>
+            <strong>选择策略</strong>：守约方应比较违约金和双倍定金的金额，选择更高的一方。<br>
+            <strong>记忆点</strong>：定金和违约金是"两条腿"，走路只能迈一条——挑粗的那条迈。
+          </div>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="q"><strong>3.</strong> 最高法 2023 年典型案例中，某研究所发出中标通知书后又反悔不签书面合同。法院为什么认定合同已经成立？请用要约/承诺理论分析。</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <strong>法院分析逻辑：</strong><br><br>
+            <table>
+              <tr><th>阶段</th><th>行为</th><th>法律性质</th></tr>
+              <tr><td>研究所发布招标公告</td><td>公开邀请投标</td><td><strong>要约邀请</strong></td></tr>
+              <tr><td>物业公司提交投标文件</td><td>表示愿意按招标条件成交</td><td><strong>要约</strong></td></tr>
+              <tr><td>招标公司发出中标通知书</td><td>确定中标人</td><td><strong>承诺</strong></td></tr>
+              <tr><td>中标通知书送达物业公司</td><td>承诺到达受要约人</td><td><strong>承诺生效，合同成立</strong></td></tr>
+            </table>
+            <br>
+            <strong>关键法理：</strong>
+            <ol>
+              <li>招投标文件对租赁合同内容已有明确记载，双方已就合同内容达成合意。</li>
+              <li>中标后签订的书面合同，按《招标投标法》第 46 条规定，实质性内容必须与招投标文件一致——它只是确认形式，而非新的合同。</li>
+              <li>因此，合同在中标通知书到达时即成立，研究所不履行 = 违约。</li>
+            </ol>
+            <br>
+            <strong>启示</strong>：合同不一定需要白纸黑字签字盖章才成立。要约遇上承诺的那一刻，合同就"握手"成功了。
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="next-preview">
+      <h3>📅 下期预告</h3>
+      <div class="meta">
+        <strong>第 10 课 · 政治 · 政府职能与科层制：政府究竟在做什么</strong><br>
+        核心知识点：政府职能（政治/经济/文化/社会/生态）、科层制、放管服、越位与缺位<br>
+        真实新闻案例："最多跑一次"改革；营商环境优化新闻<br>
+        延伸阅读：欧文·休斯《公共管理导论》第 2、5 章；周志忍《政府管理》
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p><strong>本课小结：</strong>合同是"说话算数"的法律版本。理解合同的三步逻辑——成立（要约+承诺）、效力（有效/无效/可撤销）、责任（违约要赔）——你就掌握了民事交往中最常用的法律工具。</p>
+      <p style="margin-top:10px;">本文档为政经法零基础日课第9课内容 | 系列介绍：<a href="./index.html">index.html</a></p>
+    </div>
+  </div>
+</body>
+</html>

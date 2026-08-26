@@ -30,8 +30,8 @@
 | 第 5 课 | 经济 | 供需与价格：无形的手如何定价 | [MD](day-05-供需与价格.md) · [HTML](day-05-供需与价格.html) | [打开](https://docs.qq.com/aio/DV2ZKR2h6VUpadW51?_fid=WfJGhzUJZunu) |
 | 第 6 课 | 律法 | 宪法：根本法与合宪性审查 | [MD](day-06-宪法.md) · [HTML](day-06-宪法.html) | [打开](https://docs.qq.com/aio/DV2FNQXBZbGVZTnNV) |
 | 第 7 课 | 政治 | 宪法与公民权利：根本法如何守护你 | [MD](day-07-宪法与公民权利.md) · [HTML](day-07-宪法与公民权利.html) | [打开](https://docs.qq.com/doc/DV2ZwTGNJZGNtSFJW) |
-| 第 8 课 | 经济 | 市场与失灵：为什么有时候市场不灵 | 待发布 | — |
-| 第 9 课 | 律法 | 民法·合同：白纸黑字的约束力 | 待发布 | — |
+| 第 8 课 | 经济 | 市场与失灵：为什么有时候市场不灵 | [MD](day-08-市场与失灵.md) · [HTML](day-08-市场与失灵.html) | [打开](https://docs.qq.com/aio/DV0ZqVHJhWkpxRUxS) |
+| 第 9 课 | 律法 | 民法·合同：白纸黑字的约束力 | [MD](day-09-民法合同.md) · [HTML](day-09-民法合同.html) | [打开](https://docs.qq.com/aio/DV2ZobGtJd0JwbFhu) |
 | 第 10 课 | 政治 | 政府职能与科层制：政府究竟在做什么 | 待发布 | — |
 | 第 11 课 | 经济 | 货币与通胀：钱为什么会"变薄" | 待发布 | — |
 | 第 12 课 | 律法 | 民法·侵权与婚姻：权利受侵如何救济 | 待发布 | — |

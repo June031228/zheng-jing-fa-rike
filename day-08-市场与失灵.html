@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 8 课 · 经济 · 市场与失灵</title>
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --secondary: #6c757d;
+      --success: #198754;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --card-radius: 12px;
+      --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.7; color: var(--dark); background: #f0f2f5; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: var(--card-radius); margin-bottom: 20px; text-align: center; }
+    .header h1 { font-size: 1.8em; margin-bottom: 10px; }
+    .header .subtitle { opacity: 0.9; font-size: 0.95em; }
+    .tag-row { display: flex; gap: 8px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+    .tag { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.85em; }
+    .card { background: white; border-radius: var(--card-radius); padding: 24px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+    .card h2 { color: var(--primary); font-size: 1.3em; margin-bottom: 16px; border-left: 4px solid var(--primary); padding-left: 12px; }
+    .card h3 { color: var(--dark); font-size: 1.1em; margin: 20px 0 12px; }
+    .card p { margin-bottom: 12px; }
+    .core-box { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: var(--card-radius); padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
+    .core-box blockquote { font-size: 1.1em; color: var(--dark); }
+    .term-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+    .term-card { background: var(--light); padding: 16px; border-radius: 8px; border: 1px solid #e9ecef; }
+    .term-card strong { color: var(--primary); display: block; margin-bottom: 6px; }
+    .term-card .en { color: var(--secondary); font-size: 0.85em; font-style: italic; }
+    .term-card .tip { margin-top: 8px; font-size: 0.9em; color: #495057; background: #fff3cd; padding: 6px 10px; border-radius: 4px; }
+    .knowledge-card { background: var(--light); padding: 20px; border-radius: 8px; margin-bottom: 16px; }
+    .knowledge-card h4 { color: var(--primary); margin-bottom: 12px; font-size: 1.05em; }
+    .knowledge-card ul { padding-left: 20px; }
+    .knowledge-card li { margin-bottom: 8px; }
+    .case-label { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; margin-right: 6px; }
+    .case-life { background: #e8f5e9; color: #2e7d32; }
+    .case-news { background: #fff3e0; color: #e65100; }
+    .case-system { background: #e3f2fd; color: #1565c0; }
+    .case-block { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 14px; border-left: 3px solid #dee2e6; }
+    .case-block h4 { margin-bottom: 10px; }
+    .highlight-box { background: #fff8e1; padding: 16px; border-radius: 8px; margin: 16px 0; }
+    .highlight-box strong { color: #f57f17; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+    th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; }
+    td { padding: 10px 12px; border-bottom: 1px solid #dee2e6; }
+    tr:hover { background: #f8f9fa; }
+    .book-card { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #e9ecef; }
+    .book-card .title { font-weight: bold; color: var(--dark); margin-bottom: 6px; }
+    .book-card .author { color: var(--secondary); font-size: 0.9em; margin-bottom: 6px; }
+    .book-card .chapters { color: var(--primary); font-size: 0.85em; }
+    .summary-table td:first-child { font-weight: bold; background: #f8f9fa; width: 30%; }
+    .qa-item { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 14px; }
+    .qa-item .q { font-weight: bold; color: var(--dark); margin-bottom: 10px; }
+    .qa-item .answer { padding: 12px; background: #e8f4f8; border-radius: 6px; margin-top: 8px; }
+    .next-preview { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: var(--card-radius); text-align: center; }
+    .next-preview h3 { margin-bottom: 12px; }
+    .next-preview .meta { opacity: 0.9; font-size: 0.9em; }
+    .footer-note { text-align: center; color: var(--secondary); font-size: 0.85em; padding: 20px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>第 8 课 · 经济 · 市场与失灵</h1>
+      <div class="subtitle">为什么有时候市场不灵</div>
+      <div class="tag-row">
+        <span class="tag">政经法零基础日课</span>
+        <span class="tag">8 / 24</span>
+        <span class="tag">第3轮 · 经济</span>
+        <span class="tag">2026年8月24日</span>
+        <span class="tag"><a href="https://docs.qq.com/aio/DV0ZqVHJhWkpxRUxS" target="_blank" style="color:white;text-decoration:none;">腾讯文档</a></span>
+      </div>
+    </div>
+
+    <div class="core-box">
+      <blockquote><strong>一句话核心：</strong>市场不是万能的——当外部性、公共物品、垄断或信息不对称出现时，"无形的手"会失灵，需要政府这只"有形的手"来纠偏。</blockquote>
+    </div>
+
+    <div class="card">
+      <h2>📖 专业名词解释</h2>
+      <div class="term-grid">
+        <div class="term-card">
+          <strong>市场失灵</strong>
+          <span class="en">Market Failure</span>
+          <div class="tip">市场"生病"了，资源分配跑偏了</div>
+        </div>
+        <div class="term-card">
+          <strong>外部性</strong>
+          <span class="en">Externality</span>
+          <div class="tip">"城门失火，殃及池鱼"——一个人的行为让隔壁遭殃</div>
+        </div>
+        <div class="term-card">
+          <strong>公共物品</strong>
+          <span class="en">Public Goods</span>
+          <div class="tip">像路灯——装了大家都能用，不装大家都黑着；很难收钱</div>
+        </div>
+        <div class="term-card">
+          <strong>垄断</strong>
+          <span class="en">Monopoly</span>
+          <div class="tip">"独此一家，别无分号"——买家没有选择</div>
+        </div>
+        <div class="term-card">
+          <strong>信息不对称</strong>
+          <span class="en">Information Asymmetry</span>
+          <div class="tip">"买的不如卖的精"——一方知道的比另一方多很多</div>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:20px;">
+        <strong>记忆口诀：</strong>市场失灵有四怪——<strong>外</strong>（外部性）<strong>公</strong>（公共物品）<strong>垄</strong>（垄断）<strong>不</strong>（信息不对称）对（对称破缺）
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🧠 知识点（连贯主线）</h2>
+
+      <div class="knowledge-card">
+        <h4>1. 市场失灵的定义</h4>
+        <p>市场失灵是指市场机制在某些条件下无法有效配置资源，导致资源浪费或分配不公平。简单说：<strong>价格信号失灵了，资源该去的地方去不了</strong>。</p>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>2. 市场失灵的四大类型</h4>
+
+        <h3>（1）外部性（Externality）</h3>
+        <p><strong>定义</strong>：一个人的行为对他人造成了成本或收益，但这个成本/收益没有反映在市场价格里。</p>
+        <ul>
+          <li><strong>负外部性</strong>：行为让他人受损，但肇事者不付代价。
+            <ul>
+              <li>示例：工厂排污 → 周边居民生病</li>
+              <li>现代案例：中国北方雾霾与工业排放</li>
+            </ul>
+          </li>
+          <li><strong>正外部性</strong>：行为让他人受益，但肇事者没有获得全部收益。
+            <ul>
+              <li>示例：某人接种疫苗 → 周围人也更安全（群体免疫）</li>
+              <li>示例：屋主装修房屋 → 整条街颜值提升、房价上涨</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>（2）公共物品（Public Goods）</h3>
+        <p><strong>定义</strong>：具有<strong>非竞争性</strong>（一人用不影响他人用）和<strong>非排他性</strong>（很难排除他人使用）的物品。</p>
+        <ul>
+          <li>典型公共物品：国防、路灯、天气预报、公共广播</li>
+          <li><strong>免费搭车问题（Free Rider Problem）</strong>：既然排除不了谁用，那就不付钱白用——结果是没人愿意提供</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table>
+            <tr><th>类型</th><th>竞争性</th><th>排他性</th><th>代表物品</th></tr>
+            <tr><td>纯公共物品</td><td>❌ 非竞争</td><td>❌ 非排他</td><td>国防、路灯</td></tr>
+            <tr><td>准公共物品</td><td>部分竞争</td><td>部分排他</td><td>公路（高峰期拥挤）</td></tr>
+            <tr><td>私人物品</td><td>✅ 竞争</td><td>✅ 排他</td><td>面包、手机</td></tr>
+          </table>
+        </div>
+
+        <h3>（3）垄断（Monopoly）</h3>
+        <p><strong>定义</strong>：市场上只有一个卖家，或少数几个卖家能控制整个市场。</p>
+        <ul>
+          <li><strong>自然垄断</strong>：某些行业天生就是一家效率最高（规模经济），如电网、自来水</li>
+          <li><strong>行政垄断</strong>：政府用许可证、配额等人为制造的壁垒</li>
+          <li><strong>市场垄断</strong>：企业靠技术、品牌、并购形成的优势地位</li>
+        </ul>
+
+        <h3>（4）信息不对称（Information Asymmetry）</h3>
+        <ul>
+          <li><strong>逆向选择（Adverse Selection）</strong>：交易前信息不对称导致"劣币驱逐良币"。经典案例：二手车市场的"柠檬问题"</li>
+          <li><strong>道德风险（Moral Hazard）</strong>：交易后信息不对称导致一方改变行为损害另一方。经典案例：银行存款保险后，银行可能冒更大风险</li>
+        </ul>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>3. 政府干预的边界</h4>
+        <p>不是说政府干预越多越好。干预也有成本：</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>干预工具</th><th>适用情形</th><th>潜在问题</th></tr>
+            <tr><td>征税/补贴</td><td>纠正外部性</td><td>税率如何定？补贴会不会被滥用？</td></tr>
+            <tr><td>管制/法规</td><td>反垄断、信息披露要求</td><td>管制过度会扼杀创新</td></tr>
+            <tr><td>直接提供公共物品</td><td>市场提供不足时</td><td>政府效率可能低于市场</td></tr>
+            <tr><td>产权界定</td><td>外部性纠纷</td><td>产权界定本身也有成本</td></tr>
+          </table>
+        </div>
+        <div class="highlight-box">
+          <strong>核心原则：</strong>政府干预应针对<strong>市场失灵的具体原因</strong>，而非替代市场。干预是为了让市场更好地运行，而非消灭市场。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📊 由浅入深案例</h2>
+
+      <div class="case-block">
+        <h4><span class="case-label case-life">生活场景</span>宿舍里的"公共物品困境"</h4>
+        <p><strong>场景：</strong>大学宿舍4人间，小明提议买一台空气净化器放在公共区域。说好每人出50元，但到了付款时大家都想"蹭"。</p>
+        <p><strong>结果：</strong>没有人愿意付钱，空气净化器买不成，大家一起吸雾霾。</p>
+        <p><strong>对应知识点：</strong>空气净化器是<strong>准公共物品</strong>，具有非排他性，引发<strong>免费搭车问题</strong>。</p>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-news">真实新闻</span>阿里巴巴反垄断罚款 182.28 亿元</h4>
+        <p><strong>来源：</strong>中国市场监管报、新华社，2021年4月10日</p>
+        <p><strong>事件：</strong>市场监管总局对阿里巴巴罚款182.28亿元（2019年境内销售额4%）。原因是"二选一"——要求平台商家只能在阿里平台开店，构成<strong>滥用市场支配地位</strong>。</p>
+        <p><strong>制度分析：</strong>这是<strong>垄断的市场失灵</strong>，需要《反垄断法》纠偏。罚款目的是<strong>恢复竞争秩序</strong>，而非消灭企业。</p>
+        <p><strong>延伸：</strong>2021年以来，中国对互联网平台垄断监管持续加强，包括腾讯音乐独家版权被罚、美团"二选一"被罚34.42亿元等。</p>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-system">制度/原理</span>雾霾治理：负外部性的政府纠偏之路</h4>
+        <p><strong>背景：</strong>冬天北方雾霾严重。工厂排污的成本由全社会承担（公众健康、生态恶化），工厂自己几乎不承担——典型的<strong>负外部性</strong>。</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>时间</th><th>政策</th><th>针对的外部性</th></tr>
+            <tr><td>2013年</td><td>《大气污染防治行动计划》</td><td>负外部性（工业排放）</td></tr>
+            <tr><td>2015年</td><td>新《环境保护法》</td><td>加大处罚力度</td></tr>
+            <tr><td>2018年</td><td>环保税开征</td><td>将外部成本内部化</td></tr>
+            <tr><td>2019年</td><td>超低排放改造</td><td>技术标准消除负外部性</td></tr>
+          </table>
+        </div>
+        <p><strong>背后的经济学原理：</strong></p>
+        <ul>
+          <li><strong>庇古税（Pigouvian Tax）</strong>：对负外部性活动征税，税率 = 边际外部成本</li>
+          <li><strong>排污权交易（Cap-and-Trade）</strong>：设定总量上限，允许企业买卖排污权</li>
+        </ul>
+        <p><strong>效果：</strong>2020年北京PM2.5年均浓度较2013年下降50%以上。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📚 延伸阅读推荐</h2>
+
+      <div class="book-card">
+        <div class="title">《经济学原理：微观经济学分册》</div>
+        <div class="author">作者：N. 格里高利·曼昆 | 出版社：北京大学出版社</div>
+        <div class="chapters">📖 必读章节：第10章"外部性"、第11章"公共物品和公共资源"</div>
+        <p style="margin-top:10px;font-size:0.9em;">推荐理由：全球最经典的经济学入门教材，语言通俗，例子贴近生活。第10-11章专门讲市场失灵中的外部性和公共物品。</p>
+      </div>
+
+      <div class="book-card">
+        <div class="title">《经济学》第四版</div>
+        <div class="author">作者：约瑟夫·E·斯蒂格利茨（诺贝尔经济学奖得主）| 出版社：中国人民大学出版社</div>
+        <div class="chapters">📖 推荐章节：第3编"政府在经济中的作用"相关章节</div>
+        <p style="margin-top:10px;font-size:0.9em;">推荐理由：斯蒂格利茨主张<strong>市场失灵比传统经济学承认的更普遍</strong>，政府干预的必要性更大。适合想深入理解"何时需要政府"的读者。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📋 当日小结</h2>
+      <div class="table-wrap">
+        <table class="summary-table">
+          <tr><td>市场失灵是什么</td><td>市场机制无法有效配置资源的状态</td></tr>
+          <tr><td>四种类型</td><td>外部性（分正负）→ 公共物品（免费搭车）→ 垄断（一家独大）→ 信息不对称</td></tr>
+          <tr><td>纠偏工具</td><td>征税/补贴（庇古税）、管制、反垄断法、产权界定、公共物品直接提供</td></tr>
+          <tr><td>干预边界</td><td>干预是为了让市场更好地运行，而非替代市场</td></tr>
+          <tr><td>核心案例</td><td>阿里巴巴反垄断罚款——垄断的市场失灵需要法律纠偏</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✅ 自测题</h2>
+
+      <div class="qa-item">
+        <div class="q"><strong>1.</strong> 什么是"免费搭车问题"？它与哪类市场失灵直接相关？</div>
+        <div class="answer">
+          <strong>答案：</strong><br>
+          <strong>免费搭车问题（Free Rider Problem）</strong>指的是：某些人消费的物品不需要付出代价（或付出很少代价），导致理性人选择"蹭"而不是主动付费。<br><br>
+          它与<strong>公共物品</strong>直接相关——由于公共物品的非排他性（很难排除他人使用），人们倾向于等待他人付费后自己免费享用，最终可能导致没有人愿意付费提供公共物品。<br><br>
+          <strong>记忆点</strong>：公共物品 = 搭便车 = 没有人愿意当冤大头主动付钱
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="q"><strong>2.</strong> 请解释"负外部性"和"正外部性"各举一个生活中的例子。</div>
+        <div class="answer">
+          <strong>答案：</strong><br><br>
+          <strong>负外部性（Negative Externality）</strong>：某个人的行为让其他人受损，但受损者没有获得补偿。<br>
+          例子：工厂排放污水 → 下游居民饮水受影响；在公共场所抽烟 → 周围人被迫吸二手烟；开车通勤导致交通拥堵 → 所有人通勤时间变长<br><br>
+          <strong>正外部性（Positive Externality）</strong>：某个人的行为让其他人受益，但受益者没有付费。<br>
+          例子：接种疫苗 → 同时保护了周围免疫力低下的人；修复老建筑 → 整条街道的旅游价值和房价提升<br><br>
+          <strong>区分技巧</strong>：负外部性 = "损人利己（或损人不利己）"；正外部性 = "助人为乐"（但没收到感谢费）
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="q"><strong>3.</strong> 阿里巴巴被罚182亿元的反垄断案例，体现了政府对哪类市场失灵的纠偏？这种纠偏可能带来什么社会收益？</div>
+        <div class="answer">
+          <strong>答案：</strong><br><br>
+          <strong>对应的市场失灵类型</strong>：<strong>垄断（Monopoly）</strong>——具体是"滥用市场支配地位"，通过"二选一"强制平台商家排他性入驻，限制了正常的市场竞争。<br><br>
+          <strong>可能带来的社会收益：</strong><br>
+          <ol>
+            <li><strong>恢复竞争秩序</strong>：让更多平台有机会参与竞争</li>
+            <li><strong>降低商品/服务价格</strong>：竞争加剧后，企业难以维持垄断高价</li>
+            <li><strong>促进创新</strong>：中小企业和创新企业有生存空间</li>
+            <li><strong>保护消费者和商家利益</strong>：打破平台对商家的不合理约束</li>
+            <li><strong>优化行业生态</strong>：避免"大树底下不长草"的行业固化</li>
+          </ol>
+          <br>
+          <strong>经济学原理：</strong>反垄断的核心是<strong>纠正资源配置的低效率</strong>——垄断导致产量低于社会最优水平（无谓损失/Deadweight Loss），反垄断通过恢复竞争，让产量向竞争市场水平回归。
+        </div>
+      </div>
+    </div>
+
+    <div class="next-preview">
+      <h3>📅 下期预告</h3>
+      <div class="meta">
+        <strong>第 9 课 · 律法 · 民法·合同：白纸黑字的约束力</strong><br>
+        核心知识点：合同成立（要约/承诺）、效力（有效/无效/可撤销）、违约责任<br>
+        真实新闻案例：房屋买卖/网购合同纠纷真实判决<br>
+        延伸阅读：王泽鉴《民法思维》第1–2章
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p><strong>本课小结：</strong>市场失灵不是市场的失败，而是提醒我们：<strong>市场有边界，边界处需要规则</strong>。理解市场失灵，是理解政府与市场关系的第一步。</p>
+      <p style="margin-top:10px;">本文档为政经法零基础日课第8课内容 | 系列介绍：<a href="./index.html">index.html</a></p>
+    </div>
+  </div>
+</body>
+</html>
