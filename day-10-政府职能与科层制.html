@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 10 课 · 政治 · 政府职能与科层制</title>
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --secondary: #6c757d;
+      --success: #198754;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --card-radius: 12px;
+      --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.7; color: var(--dark); background: #f0f2f5; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: var(--card-radius); margin-bottom: 20px; text-align: center; }
+    .header h1 { font-size: 1.8em; margin-bottom: 10px; }
+    .header .subtitle { opacity: 0.9; font-size: 0.95em; }
+    .tag-row { display: flex; gap: 8px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+    .tag { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.85em; }
+    .card { background: white; border-radius: var(--card-radius); padding: 24px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+    .card h2 { color: var(--primary); font-size: 1.3em; margin-bottom: 16px; border-left: 4px solid var(--primary); padding-left: 12px; }
+    .card h3 { color: var(--dark); font-size: 1.1em; margin: 20px 0 12px; }
+    .card p { margin-bottom: 12px; }
+    .core-box { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: var(--card-radius); padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
+    .core-box blockquote { font-size: 1.1em; color: var(--dark); }
+    .term-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+    .term-card { background: var(--light); padding: 16px; border-radius: 8px; border: 1px solid #e9ecef; }
+    .term-card strong { color: var(--primary); display: block; margin-bottom: 6px; }
+    .term-card .en { color: var(--secondary); font-size: 0.85em; font-style: italic; }
+    .term-card .tip { margin-top: 8px; font-size: 0.9em; color: #495057; background: #fff3cd; padding: 6px 10px; border-radius: 4px; }
+    .knowledge-card { background: var(--light); padding: 20px; border-radius: 8px; margin-bottom: 16px; }
+    .knowledge-card h4 { color: var(--primary); margin-bottom: 12px; font-size: 1.05em; }
+    .knowledge-card ul { padding-left: 20px; }
+    .knowledge-card li { margin-bottom: 8px; }
+    .case-label { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; margin-right: 6px; }
+    .case-life { background: #e8f5e9; color: #2e7d32; }
+    .case-news { background: #fff3e0; color: #e65100; }
+    .case-system { background: #e3f2fd; color: #1565c0; }
+    .case-block { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 14px; border-left: 3px solid #dee2e6; }
+    .case-block h4 { margin-bottom: 10px; }
+    .highlight-box { background: #fff8e1; padding: 16px; border-radius: 8px; margin: 16px 0; }
+    .highlight-box strong { color: #f57f17; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+    th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; }
+    td { padding: 10px 12px; border-bottom: 1px solid #dee2e6; }
+    tr:hover { background: #f8f9fa; }
+    .book-card { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #e9ecef; }
+    .book-card .title { font-weight: bold; color: var(--dark); margin-bottom: 6px; }
+    .book-card .author { color: var(--secondary); font-size: 0.9em; margin-bottom: 6px; }
+    .book-card .chapters { color: var(--primary); font-size: 0.85em; }
+    .summary-table td:first-child { font-weight: bold; background: #f8f9fa; width: 30%; }
+    .qa-item { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 14px; }
+    .qa-item .q { font-weight: bold; color: var(--dark); margin-bottom: 10px; }
+    .qa-item details { margin-top: 8px; }
+    .qa-item summary { cursor: pointer; color: var(--primary); font-weight: bold; padding: 8px 12px; background: #e8f4f8; border-radius: 6px; list-style: none; }
+    .qa-item summary::-webkit-details-marker { display: none; }
+    .qa-item details[open] summary { border-radius: 6px 6px 0 0; }
+    .qa-item .answer { padding: 12px; background: #e8f4f8; border-radius: 6px; margin-top: 2px; }
+    .next-preview { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: var(--card-radius); text-align: center; }
+    .next-preview h3 { margin-bottom: 12px; }
+    .next-preview .meta { opacity: 0.9; font-size: 0.9em; }
+    .footer-note { text-align: center; color: var(--secondary); font-size: 0.85em; padding: 20px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>第 10 课 · 政治 · 政府职能与科层制</h1>
+      <div class="subtitle">政府究竟在做什么</div>
+      <div class="tag-row">
+        <span class="tag">政经法零基础日课</span>
+        <span class="tag">10 / 24</span>
+        <span class="tag">第4轮 · 政治</span>
+        <span class="tag">2026年8月26日</span>
+        <span class="tag"><a href="https://docs.qq.com/aio/DV1FrY1BrZm5LcEN3" target="_blank" style="color:white;text-decoration:none;">腾讯文档</a></span>
+      </div>
+    </div>
+
+    <div class="core-box">
+      <blockquote>政府不只是"盖章的窗口"——它同时肩负政治、经济、文化、社会、生态五重职能，靠科层制把任务层层分解落地；"放管服"改革的核心，就是让政府干该干的（到位）、不干不该干的（不越位）、该干好的不缺位。</blockquote>
+    </div>
+
+    <div class="card">
+      <h2>📖 专业名词解释</h2>
+      <div class="term-grid">
+        <div class="term-card">
+          <strong>科层制</strong>
+          <span class="en">Bureaucracy</span>
+          <p>"金字塔式流水线"——按层级分工、照章办事、各管一摊；好处是标准化和可预期，坏处是可能僵化、推诿</p>
+        </div>
+        <div class="term-card">
+          <strong>放管服</strong>
+          <span class="en">Delegate-Regulate-Serve</span>
+          <p>"放权 + 管好 + 服务"——简政放权（少盖章）、放管结合（管该管的）、优化服务（让群众少跑腿）</p>
+        </div>
+        <div class="term-card">
+          <strong>越位</strong>
+          <span class="en">Overreach</span>
+          <p>"手伸太长"——政府干了市场和社会能干的事，比如不该审批的硬要审批</p>
+        </div>
+        <div class="term-card">
+          <strong>缺位</strong>
+          <span class="en">Absence</span>
+          <p>"该干的不干"——该监管的没监管到（如食品安全、环保），该提供的公共服务没提供</p>
+        </div>
+        <div class="term-card">
+          <strong>五职能</strong>
+          <span class="en">Five Functions</span>
+          <p>"政经文社生"——政治职能、经济职能、文化职能、社会职能、生态职能，记口诀"五位一体"</p>
+        </div>
+      </div>
+      <div class="highlight-box">
+        <strong>记忆口诀：</strong>政府干五件事——<strong>政经文社生</strong>；改革三字经——<strong>放（减审批）、管（管该管）、服（好办事）</strong>；两个毛病——<strong>越位手太长，缺位该干不干</strong>。
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🧠 知识点（连贯主线）</h2>
+
+      <div class="knowledge-card">
+        <h4>1. 政府到底在做什么——五重职能</h4>
+        <p>现代政府的职能不是单一的"管理"，而是覆盖公共生活全领域的五大板块：</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>职能</th><th>核心内容</th><th>你身边的事</th></tr>
+            <tr><td><strong>政治职能</strong></td><td>保卫国家安全、维护社会秩序、保障公民权利</td><td>国防、公安、出入境管理、基层选举组织</td></tr>
+            <tr><td><strong>经济职能</strong></td><td>宏观调控、市场监管、公共设施建设</td><td>央行调整利率、市场监管总局查处垄断、修路架桥</td></tr>
+            <tr><td><strong>文化职能</strong></td><td>发展教育、科技、文化事业</td><td>义务教育免费、图书馆博物馆免费开放、科研经费</td></tr>
+            <tr><td><strong>社会职能</strong></td><td>调节收入分配、提供社会保障、组织公共服务</td><td>社保医保、最低生活保障、公共卫生应急</td></tr>
+            <tr><td><strong>生态职能</strong></td><td>保护自然环境、推动绿色发展、环境治理</td><td>碳达峰碳中和目标、河长制、大气污染防治</td></tr>
+          </table>
+        </div>
+        <p><strong>演进逻辑</strong>：从"守夜人"（最小政府，只管治安和契约执行）→"全能型"（计划经济时代大包大揽）→"服务型"（市场经济时代，该放的放、该管的管、该服务的服务好）。这正是中国政府改革的主线。</p>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>2. 政府怎么运转——科层制</h4>
+        <p>政府能做的事这么多，靠什么组织起来？答案是<strong>科层制（Bureaucracy）</strong>——德国社会学家马克斯·韦伯提出的理想行政组织模型。</p>
+        <p><strong>科层制的核心特征</strong>：</p>
+        <ul>
+          <li><strong>层级分明</strong>：从国务院→省政府→市政府→县区政府→乡镇街道，层层授权、逐级负责。你办一张身份证，从派出所窗口到公安部系统，背后是一个层级链条。</li>
+          <li><strong>专业分工</strong>：每个部门管特定领域——卫健委管医院和防疫、教育局管学校、市场监管局管企业和食品安全。分工越细，专业性越强，但也越容易"各管一摊、推诿扯皮"。</li>
+          <li><strong>照章办事</strong>：公务员按法律法规和文件办事，不随意。好处是公平可预期（同件事同标准办），坏处是僵化死板（变通难、创新难）。</li>
+          <li><strong>非人格化</strong>：公事公办，不看你是不是领导的亲戚，只看材料符不符合条件。这是进步——减少人情干预和腐败空间。</li>
+        </ul>
+        <p><strong>科层制的两面</strong>：科层制解决了"怎么把大事分解给千百万人去干"的组织难题，但也天生容易产生"文山会海""踢皮球""一刀切"等问题。中国行政改革的很多举措，本质上就是在科层制的框架里"修活"——打通数据壁垒、简化流程、减少不必要的审批层级。</p>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>3. 政府改革的"放管服"三字经</h4>
+        <p>"放管服"是"简政放权、放管结合、优化服务"的简称，是2015年以来中国政府职能转变的主线改革。</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>要素</th><th>全称</th><th>做什么</th><th>举例</th></tr>
+            <tr><td><strong>放</strong></td><td>简政放权</td><td>减少不必要的行政审批，降低市场准入门槛</td><td>取消数百项行政审批事项、实行"证照分离"、发布市场准入负面清单</td></tr>
+            <tr><td><strong>管</strong></td><td>放管结合</td><td>该管的管住管好，不该管的放手；从"审批"转向"监管"</td><td>"双随机一公开"抽查、信用监管、反垄断执法、食品安全抽检</td></tr>
+            <tr><td><strong>服</strong></td><td>优化服务</td><td>让群众和企业办事更方便、更高效、更少跑腿</td><td>"最多跑一次""一网通办""高效办成一件事"</td></tr>
+          </table>
+        </div>
+        <p><strong>关键逻辑</strong>：放不是不管，而是从"事前审批"转向"事中事后监管"。以前开一家饭店要先跑七八个部门盖章（事前审批），现在先照后证、先营后查（事中事后监管），管住食品安全、消防安全等重点环节。</p>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>4. 越位与缺位——政府"该干"与"不该干"的边界</h4>
+        <p>政府职能转变的核心问题就是：<strong>该干的事干到位，不该干的事不伸手</strong>。</p>
+        <ul>
+          <li><strong>越位（Overreach）</strong>：政府干了市场和社会能干好的事。
+            <ul>
+              <li>典型表现：不必要的行政审批、对市场价格的过度干预、政府直接介入企业经营决策。</li>
+              <li>危害：抑制市场活力，增加企业成本，政府自己也被琐事拖累。</li>
+            </ul>
+          </li>
+          <li><strong>缺位（Absence）</strong>：政府该干的事没干或没干好。
+            <ul>
+              <li>典型表现：食品安全监管不力、环境污染没人管、公共服务供给不足、弱势群体保障不到位。</li>
+              <li>危害：市场失灵无人纠正，公众利益受损，政府公信力下降。</li>
+            </ul>
+          </li>
+        </ul>
+        <p><strong>理想状态</strong>：市场能办的交给市场，社会能办的交给社会，市场和社会办不了的，政府才兜底。这不是"小政府"或"大政府"的问题，而是"边界清晰、各归其位"的问题。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔍 由浅入深案例</h2>
+
+      <div class="case-block">
+        <h4><span class="case-label case-life">生活场景</span> 你去办事大厅盖章，为什么要跑五趟？</h4>
+        <p><strong>场景</strong>：你想开一家小型餐饮店。十年前，你要先去工商局办营业执照、再去食药监局办食品经营许可证、再去消防部门办消防检查、再去税务局办税务登记、最后去社保局办员工社保登记——五个部门、五份材料、五个窗口、至少跑五趟，等上几周。</p>
+        <p><strong>分析</strong>：</p>
+        <ul>
+          <li>这就是科层制"专业分工"的副作用：每个部门各管一摊，群众就成了部门之间的"快递员"。</li>
+          <li>政府的"缺位"体现在：没有人负责把跨部门的事串起来办；群众的办事体验，没有哪个部门"兜底"。</li>
+          <li>"放管服"改革要解决的，正是这个痛点。</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>转变后：</strong>如今在浙江等改革先行地区，开一家餐饮店，设立登记、刻章备案等基本政务服务可一次办好，还能叠加餐饮选址勘查、消防安全指导等增值服务——从"群众跑五个部门"变成"数据跑、干部跑，群众只跑一次"。
+        </div>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-news">真实新闻</span> 浙江"最多跑一次"改革：政府自我革命的样板</h4>
+        <p><strong>新闻来源</strong>：人民网浙江频道，2024年6月25日《"浙里办"上线十周年：让群众没有难办的事》；人民日报，2024年9月11日《最多跑一次 群众好办事（身边的改革故事）》</p>
+        <p><strong>事件经过</strong>：2016年，浙江率先提出"最多跑一次"改革——群众和企业到政府办事，在申请材料齐全、符合法定受理条件时，最多跑一次就能办成。此后，改革不断深化：从"跑一次"到"一次不用跑"，从"便捷服务"到"增值服务"。</p>
+        <p><strong>关键数据</strong>（人民网浙江频道 2024年6月报道）：</p>
+        <ul>
+          <li><strong>户口迁移</strong>：原先群众办理省内户口迁移需往返迁入地、迁出地，跑<strong>4次</strong>；改革后只需跑<strong>1次</strong>，每年至少惠及全省<strong>15万</strong>办事群众，减少群众来回跑<strong>30余万次</strong>。</li>
+          <li><strong>企业开办</strong>：原先从设立登记、公章刻制到发票申领、社保登记等，整个流程要递交<strong>15份材料</strong>、环节达<strong>7个</strong>、需约<strong>8.6个工作日</strong>才能完成；改革后<strong>1个工作日</strong>即可完成办理。</li>
+          <li><strong>全省3093个</strong>依申请政务服务事项实现"一事项一表单一流程"，线上线下无差别受理、同标准办理。</li>
+          <li>2023年，全省兑现奖补资金<strong>712亿元</strong>，为经营主体减负<strong>3300亿元</strong>以上。</li>
+        </ul>
+        <p><strong>2024年升级</strong>（中国发展网 2024年报道）：2024年初，国务院印发《关于进一步优化政务服务提升行政效能推动"高效办成一件事"的指导意见》。2月初，浙江发布《关于推进政务服务增值化改革的实施意见》，从"便捷服务"升级到"增值服务"。</p>
+        <div class="highlight-box">
+          <strong>制度/原理分析：</strong>
+          <ul>
+            <li>"最多跑一次"不是简单的数量改变，背后是政府职能的深刻转变：从"管理本位"转向"服务本位"。</li>
+            <li>科层制下的部门壁垒被"一网通办"打通：3093个事项同一套标准办理，不论线上还是线下窗口。</li>
+            <li>这正是"放管服"中"服"的核心——优化服务，让政府围着群众转。</li>
+            <li>"前台窗口"的"跑一次"或"跑零次"，意味着"后台车间"的流程再造和系统重塑。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-news">真实新闻</span> 《优化营商环境条例》：从政策改革到法治保障</h4>
+        <p><strong>新闻来源</strong>：中国政府网，2019年10月24日《持续优化营商环境有决心有行动》；世界银行《全球营商环境报告2020》</p>
+        <p><strong>事件经过</strong>：2019年10月23日，国务院公布《优化营商环境条例》，自<strong>2020年1月1日</strong>起施行。这是我国<strong>首部</strong>专门针对营商环境优化的行政法规，标志着"放管服"改革的关键环节从政策层面上升为法治层面。</p>
+        <p><strong>关键内容</strong>：《条例》将"放管服"改革的关键环节确立为基本规范，核心是"四个聚焦"：</p>
+        <ul>
+          <li><strong>聚焦减审批、减材料</strong>：持续大幅取消行政许可等事项，实行清单管理制度。</li>
+          <li><strong>聚焦规则公开透明</strong>：全面推行"双随机、一公开"跨部门联合监管。</li>
+          <li><strong>聚焦激活力、减负担</strong>：加强产权司法保护，大力推进减税降费。</li>
+          <li><strong>聚焦减环节、压时限</strong>：简化优化审批办理环节，加快推进"一网通办"。</li>
+        </ul>
+        <p><strong>国际对标</strong>（世界银行报告）：世界银行2020年发布《全球营商环境报告》，中国营商环境全球排名升至<strong>第31位</strong>，跻身全球前40，<strong>连续两年</strong>入列全球优化营商环境改善幅度最大的十大经济体。</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>层次</th><th>改革前</th><th>改革后</th></tr>
+            <tr><td>市场准入</td><td>审批制为主，企业跑多个部门</td><td>负面清单外"非禁即入"，一网通办</td></tr>
+            <tr><td>政府监管</td><td>事前审批重于事后监管</td><td>"双随机一公开"事中事后监管</td></tr>
+            <tr><td>办事流程</td><td>群众跑多个窗口、交多份材料</td><td>"一网通办""一件事一次办"</td></tr>
+            <tr><td>制度保障</td><td>政策文件为主，稳定性不足</td><td>《条例》立法保障，法治化轨道</td></tr>
+          </table>
+        </div>
+        <div class="highlight-box">
+          <strong>制度/原理分析：</strong>
+          <ul>
+            <li>《条例》解决了"越位"问题：通过清单管理，把政府审批权限定在法定范围内。</li>
+            <li>同时解决了"缺位"问题：明确监管责任，该管的必须管住管好。</li>
+            <li>从"政策改革"到"立法保障"是关键跃迁——"法治是最好的营商环境"。</li>
+            <li>世界银行分析认为，"数字技术和电子政务服务的广泛运用"和"鼓励地方政府因地制宜先行先试"是重要经验。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📚 延伸阅读推荐</h2>
+
+      <div class="book-card">
+        <div class="title">《公共管理导论》</div>
+        <div class="author">作者：欧文·休斯（Owen Hughes）| 出版社：中国人民大学出版社</div>
+        <div class="chapters">📖 必读章节：第 2 章"公共行政的传统模式"、第 5 章"公共管理改革"</div>
+        <p style="margin-top:10px;font-size:0.9em;">推荐理由：公共管理领域的经典入门教材，系统讲述了从传统科层制到新公共管理改革的演变。第 2 章帮你理解科层制从何而来、有什么优缺点；第 5 章直接讲全球范围内的政府改革浪潮，帮你理解"放管服"背后的理论逻辑。</p>
+      </div>
+
+      <div class="book-card">
+        <div class="title">《政府管理》</div>
+        <div class="author">作者：周志忍 | 出版社：北京大学出版社</div>
+        <div class="chapters">📖 推荐章节：重点阅读"政府职能转变"与"行政审批制度改革"章节</div>
+        <p style="margin-top:10px;font-size:0.9em;">推荐理由：周志忍教授是国内政府管理改革的权威学者之一，本书聚焦中国政府改革的实践与理论。重点章节系统分析了政府职能转变的动因、路径和成效，对理解"越位"与"缺位"、"放管服"三字经有直接帮助。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📋 当日小结</h2>
+      <div class="table-wrap">
+        <table class="summary-table">
+          <tr><td>政府五职能</td><td>政经文社生——政治、经济、文化、社会、生态；从"守夜人"到"服务型"</td></tr>
+          <tr><td>科层制</td><td>层级分明、专业分工、照章办事、非人格化；优在标准可预期，患在僵化推诿</td></tr>
+          <tr><td>放管服</td><td>放（简政放权）+ 管（放管结合）+ 服（优化服务）；从"事前审批"转向"事中事后监管"</td></tr>
+          <tr><td>越位与缺位</td><td>越位=手伸太长（管了不该管的）；缺位=该干不干（监管不到位、服务缺失）</td></tr>
+          <tr><td>核心案例</td><td>浙江"最多跑一次"——从跑5次到跑1次到跑0次；《优化营商环境条例》——从政策到法治</td></tr>
+          <tr><td>改革逻辑</td><td>市场能办的交给市场，社会能办的交给社会，兜底的事政府来——边界清晰、各归其位</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✅ 自测题</h2>
+
+      <div class="qa-item">
+        <div class="q"><strong>1.</strong> "放管服"改革中的"管"指的是什么？它与"放"是什么关系？</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <strong>"管"= 放管结合</strong>，即该管的必须管住管好，不该管的坚决放手。<br><br>
+            <ul>
+              <li><strong>"放"不是"不管"</strong>：简政放权减少的是不必要的"事前审批"，但不是取消所有管理。</li>
+              <li><strong>"管"的重点转向"事中事后监管"</strong>：从"先审批才能做"（事前）转向"你先做，我抽查监督"（事中事后）。</li>
+              <li><strong>举例</strong>：以前开饭店要先跑七八个部门盖章才能开业（事前审批），现在先照后证即可开业，但市场监管局会"双随机一公开"抽查食品安全（事中事后监管）。</li>
+            </ul>
+            <br>
+            <strong>记忆点</strong>：放是减审批、管是强监管——放不是放任，管不是审批。先放后管、以管促放，才是完整逻辑。
+          </div>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="q"><strong>2.</strong> 科层制有哪些核心特征？它最容易产生什么问题？</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <strong>科层制的四大核心特征：</strong><br><br>
+            <table>
+              <tr><th>特征</th><th>含义</th><th>举例</th></tr>
+              <tr><td>层级分明</td><td>从上到下逐级授权、逐级负责</td><td>国务院→省政府→市政府→县区→乡镇</td></tr>
+              <tr><td>专业分工</td><td>每个部门管特定领域</td><td>卫健委管医院、教育局管学校</td></tr>
+              <tr><td>照章办事</td><td>按法律法规和文件办，不随意</td><td>办身份证要交规定材料，窗口按流程走</td></tr>
+              <tr><td>非人格化</td><td>公事公办，不因人情而异</td><td>不看你是谁，只看材料符不符合条件</td></tr>
+            </table>
+            <br>
+            <strong>最容易产生的问题：</strong>
+            <ol>
+              <li><strong>推诿扯皮</strong>：部门各管一摊，遇到跨部门的事就"踢皮球"。</li>
+              <li><strong>僵化一刀切</strong>：标准统一是好事，但缺乏灵活性和变通空间。</li>
+              <li><strong>文山会海</strong>：层层请示、层层批转，效率低下。</li>
+              <li><strong>信息壁垒</strong>：部门之间数据不互通，群众反复交材料。</li>
+            </ol>
+            <br>
+            <strong>改革方向</strong>：在科层制框架内"修活"——打通数据壁垒（一网通办）、简化流程、推行"一件事一次办"，保留科层制专业分工优势的同时修复其僵化缺陷。
+          </div>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="q"><strong>3.</strong> 浙江"最多跑一次"改革体现了政府职能转变的哪些核心逻辑？请结合"放管服"和"越位/缺位"框架分析。</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <strong>分析逻辑：</strong><br><br>
+            <table>
+              <tr><th>改革维度</th><th>具体做法</th><th>体现的逻辑</th></tr>
+              <tr><td><strong>服</strong>（优化服务）</td><td>"最多跑一次""一网通办"3093个事项同一标准办理</td><td>从"管理本位"转向"服务本位"</td></tr>
+              <tr><td><strong>放</strong>（简政放权）</td><td>企业开办从7个环节、15份材料压缩到1天办结</td><td>减少不必要的审批环节</td></tr>
+              <tr><td><strong>管</strong>（放管结合）</td><td>"双随机一公开"抽查、信用监管</td><td>从事前审批转向事中事后监管</td></tr>
+              <tr><td><strong>修越位</strong></td><td>把不该审批的事项取消，负面清单外"非禁即入"</td><td>政府不干市场能干的事</td></tr>
+              <tr><td><strong>补缺位</strong></td><td>设立"兜底窗口"、企业综合服务中心解决疑难杂症</td><td>该政府兜底的事，有人管、有人办</td></tr>
+            </table>
+            <br>
+            <strong>深层逻辑：</strong>
+            <ol>
+              <li>"前台窗口"的"跑一次"，背后是"后台车间"的流程再造和系统重塑——改革不仅是政策调整，更是体制机制和理念观念的更新。</li>
+              <li>从"群众跑"到"数据跑""干部跑"——政府主动承担办事成本，而不是把成本转嫁给群众。</li>
+              <li>从"便捷服务"到"增值服务"（2024年浙江改革升级）——体现了"服务型政府"的深化。</li>
+            </ol>
+            <br>
+            <strong>启示</strong>：政府职能转变的核心不是"大"或"小"，而是"到位"——该放的放到位、该管的管到位、该服务的服务到位。
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="next-preview">
+      <h3>📅 下期预告</h3>
+      <div class="meta">
+        <strong>第 11 课 · 经济 · 货币与通胀：钱为什么会"变薄"</strong><br>
+        核心知识点：货币职能、货币供给、通胀成因（需求拉动/成本推动）、通胀影响<br>
+        真实新闻案例：阿根廷/津巴布韦高通胀新闻；我国CPI数据<br>
+        延伸阅读：曼昆《经济学原理·宏观》第4章；米什金《货币金融学》第1-2章
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p><strong>本课小结：</strong>政府不只是"盖章的窗口"。理解五职能（政经文社生）、科层制的优劣、放管服三字经、越位与缺位的边界——你就掌握了看懂政府行为和改革的底层框架。</p>
+      <p style="margin-top:10px;">本文档为政经法零基础日课第10课内容 | 系列介绍：<a href="./index.html">index.html</a></p>
+    </div>
+  </div>
+</body>
+</html>
