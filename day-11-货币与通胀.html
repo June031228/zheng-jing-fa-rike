@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 11 课 · 经济 · 货币与通胀</title>
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --secondary: #6c757d;
+      --success: #198754;
+      --warning: #ffc107;
+      --danger: #dc3545;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --card-radius: 12px;
+      --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.7; color: var(--dark); background: #f0f2f5; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: var(--card-radius); margin-bottom: 20px; text-align: center; }
+    .header h1 { font-size: 1.8em; margin-bottom: 10px; }
+    .header .subtitle { opacity: 0.9; font-size: 0.95em; }
+    .tag-row { display: flex; gap: 8px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+    .tag { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.85em; }
+    .card { background: white; border-radius: var(--card-radius); padding: 24px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+    .card h2 { color: var(--primary); font-size: 1.3em; margin-bottom: 16px; border-left: 4px solid var(--primary); padding-left: 12px; }
+    .card h3 { color: var(--dark); font-size: 1.1em; margin: 20px 0 12px; }
+    .card p { margin-bottom: 12px; }
+    .core-box { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: var(--card-radius); padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
+    .core-box blockquote { font-size: 1.1em; color: var(--dark); }
+    .term-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+    .term-card { background: var(--light); padding: 16px; border-radius: 8px; border: 1px solid #e9ecef; }
+    .term-card strong { color: var(--primary); display: block; margin-bottom: 6px; }
+    .term-card .en { color: var(--secondary); font-size: 0.85em; font-style: italic; }
+    .knowledge-card { background: var(--light); padding: 20px; border-radius: 8px; margin-bottom: 16px; }
+    .knowledge-card h4 { color: var(--primary); margin-bottom: 12px; font-size: 1.05em; }
+    .knowledge-card ul { padding-left: 20px; }
+    .knowledge-card li { margin-bottom: 8px; }
+    .case-label { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; margin-right: 6px; }
+    .case-life { background: #e8f5e9; color: #2e7d32; }
+    .case-news { background: #fff3e0; color: #e65100; }
+    .case-system { background: #e3f2fd; color: #1565c0; }
+    .case-block { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 14px; border-left: 3px solid #dee2e6; }
+    .case-block h4 { margin-bottom: 10px; }
+    .highlight-box { background: #fff8e1; padding: 16px; border-radius: 8px; margin: 16px 0; }
+    .highlight-box strong { color: #f57f17; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+    th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; }
+    td { padding: 10px 12px; border-bottom: 1px solid #dee2e6; }
+    tr:hover { background: #f8f9fa; }
+    .book-card { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #e9ecef; }
+    .book-card .title { font-weight: bold; color: var(--dark); margin-bottom: 6px; }
+    .book-card .author { color: var(--secondary); font-size: 0.9em; margin-bottom: 6px; }
+    .book-card .chapters { color: var(--primary); font-size: 0.85em; }
+    .summary-table td:first-child { font-weight: bold; background: #f8f9fa; width: 30%; }
+    .qa-item { background: var(--light); padding: 16px; border-radius: 8px; margin-bottom: 14px; }
+    .qa-item .q { font-weight: bold; color: var(--dark); margin-bottom: 10px; }
+    .qa-item details { margin-top: 8px; }
+    .qa-item summary { cursor: pointer; color: var(--primary); font-weight: bold; padding: 8px 12px; background: #e8f4f8; border-radius: 6px; list-style: none; }
+    .qa-item summary::-webkit-details-marker { display: none; }
+    .qa-item details[open] summary { border-radius: 6px 6px 0 0; }
+    .qa-item .answer { padding: 12px; background: #e8f4f8; border-radius: 6px; margin-top: 2px; }
+    .next-preview { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: var(--card-radius); text-align: center; }
+    .next-preview h3 { margin-bottom: 12px; }
+    .next-preview .meta { opacity: 0.9; font-size: 0.9em; }
+    .footer-note { text-align: center; color: var(--secondary); font-size: 0.85em; padding: 20px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>第 11 课 · 经济 · 货币与通胀</h1>
+      <div class="subtitle">钱为什么会"变薄"</div>
+      <div class="tag-row">
+        <span class="tag">政经法零基础日课</span>
+        <span class="tag">11 / 24</span>
+        <span class="tag">第4轮 · 经济</span>
+        <span class="tag">2026年8月28日</span>
+        <span class="tag"><a href="https://docs.qq.com/doc/DV2VqRVV3YUFncktM" target="_blank" style="color:white;text-decoration:none;" id="tx-doc-link">腾讯文档</a></span>
+      </div>
+    </div>
+
+    <div class="core-box">
+      <blockquote>钱"变薄"不是因为纸片磨损了，而是因为同样一张纸能换到的东西变少了——这就是通货膨胀。通胀的根源在于"钱的供给增长快过商品增长"，理解货币职能、货币供给和通胀成因，你就能看懂为什么央行加息、为什么阿根廷人抢美元、为什么你存折里的数字在悄悄缩水。</blockquote>
+    </div>
+
+    <div class="card">
+      <h2>📖 专业名词解释</h2>
+      <div class="term-grid">
+        <div class="term-card">
+          <strong>通货膨胀</strong>
+          <span class="en">Inflation</span>
+          <p>"钱不值钱了"——物价总体持续上涨，同样一块钱能买到的东西变少了。注意：不是"一个商品涨价"，而是"大多数商品持续涨"</p>
+        </div>
+        <div class="term-card">
+          <strong>CPI</strong>
+          <span class="en">Consumer Price Index</span>
+          <p>"菜篮子温度计"——居民消费价格指数，统计一篮子日常消费品和服务价格的变化，反映生活成本涨没涨</p>
+        </div>
+        <div class="term-card">
+          <strong>货币供给量</strong>
+          <span class="en">Money Supply (M0/M1/M2)</span>
+          <p>"水池里的水有多少"——M0=现金（口袋里的钱）；M1=M0+活期存款（随时能花的钱）；M2=M1+定期存款等（广义货币，含暂时花不了的钱）</p>
+        </div>
+        <div class="term-card">
+          <strong>需求拉动型通胀</strong>
+          <span class="en">Demand-Pull Inflation</span>
+          <p>"钱多东西少，抢着买→涨价"——总需求增长超过总供给，大家都在花钱抢有限的商品，价格被"拉"上去</p>
+        </div>
+        <div class="term-card">
+          <strong>成本推动型通胀</strong>
+          <span class="en">Cost-Push Inflation</span>
+          <p>"原料贵了→成品跟着涨"——生产成本上升（原材料涨价、工资上涨），企业把成本转嫁到售价上</p>
+        </div>
+      </div>
+      <div class="highlight-box">
+        <strong>记忆口诀：</strong>通胀两种"推手"——<strong>需求拉动是"拉"</strong>（花钱抢货，把价格拉上去），<strong>成本推动是"推"</strong>（成本涨了，把价格推上去）。货币三兄弟——<strong>M0口袋现、M1随时花、M2全算上</strong>。CPI=<strong>菜篮子温度计</strong>，CPI涨=菜篮子变贵了。
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🧠 知识点（连贯主线）</h2>
+
+      <div class="knowledge-card">
+        <h4>1. 钱是什么——货币的四大职能</h4>
+        <p>要理解钱为什么"变薄"，得先搞清楚钱是干什么的。经济学上，货币有四大基本职能：</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>职能</th><th>含义</th><th>生活例子</th></tr>
+            <tr><td><strong>交易媒介</strong></td><td>买东西不用以物易物，用钱当中间人</td><td>买一杯咖啡，扫码付15元，不用扛一袋米去换</td></tr>
+            <tr><td><strong>计价单位</strong></td><td>用钱来衡量一切商品和服务的价值</td><td>一杯咖啡"15元"、一个月工资"8000元"</td></tr>
+            <tr><td><strong>价值储藏</strong></td><td>今天挣的钱存起来，以后还能花</td><td>把工资存银行，理论上明年还能用</td></tr>
+            <tr><td><strong>支付手段</strong></td><td>延期支付、跨期结算</td><td>刷信用卡先消费后还款、合同约定"三个月后付款"</td></tr>
+          </table>
+        </div>
+        <p><strong>关键洞察</strong>：四大职能里，"价值储藏"最容易被通胀击穿。钱的"购买力"不是固定不变的——如果钱印多了，每一张钱能换到的商品就少了，你存的钱就在"悄悄缩水"。这就是为什么说通胀是一种"隐形税"：不需要任何人从你口袋里拿走钱，物价上涨就自动削减了你的购买力。</p>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>2. 钱从哪来——货币供给与央行</h4>
+        <p>货币不是凭空变出来的。在现代经济中，<strong>中央银行</strong>（中国人民银行/美联储/欧洲央行等）是货币供给的"总开关"。</p>
+        <p><strong>货币供给的三个层次</strong>：</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>层次</th><th>定义</th><th>通俗解释</th></tr>
+            <tr><td><strong>M0</strong></td><td>流通中的现金</td><td>你钱包里、收银机抽屉里的纸币和硬币</td></tr>
+            <tr><td><strong>M1</strong></td><td>M0 + 活期存款</td><td>随时能花的钱（企业活期存款+个人活期+信用卡存款）</td></tr>
+            <tr><td><strong>M2</strong></td><td>M1 + 定期存款 + 其他</td><td>广义货币，含暂时花不了但终归是"钱"的部分</td></tr>
+          </table>
+        </div>
+        <p><strong>央行调节货币供给的主要工具</strong>：</p>
+        <ul>
+          <li><strong>利率政策</strong>：央行加息→商业银行向央行借钱更贵→放贷更谨慎→市面流通的钱减少→给经济"降温"；降息则反向操作，给经济"加油"。</li>
+          <li><strong>存款准备金率</strong>：商业银行吸收的存款不能全借出去，必须把一部分"存"到央行。提高准备金率→银行可借出的钱减少→货币供给收缩；降低则放松。</li>
+          <li><strong>公开市场操作</strong>：央行在市场上买卖国债。央行卖国债→市场钱回流央行→货币减少；央行买国债→央行把钱放给市场→货币增加。</li>
+        </ul>
+        <p><strong>核心逻辑</strong>：货币供给增长如果快于经济增长（商品和服务产出增长），多出来的钱追逐不变甚至更少的商品，价格就会上涨。经典公式：<strong>MV = PY</strong>（货币量 × 流转速度 = 物价水平 × 实际产出）。如果V和Y短期内变化不大，M涨了，P就得跟着涨。</p>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>3. 通胀怎么量——CPI与通胀率</h4>
+        <p><strong>通货膨胀率</strong>是衡量"钱变薄"速度的核心指标，最常用的度量工具是<strong>CPI（居民消费价格指数，Consumer Price Index）</strong>。</p>
+        <p><strong>CPI怎么算出来的</strong>：国家统计局设定一个"消费篮子"——包含食品烟酒、衣着、居住、生活用品及服务、交通通信、教育文化娱乐、医疗保健、其他用品和服务等八大类、数百种商品和服务。每个月统计这些商品的价格变化，加权计算出一个总指数，与去年同期对比，涨幅就是CPI同比。</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>类型</th><th>范围</th><th>特征</th></tr>
+            <tr><td><strong>低/温和通胀</strong></td><td>1%–3%/年</td><td>一般认为对经济有益，是经济健康运行的"润滑剂"</td></tr>
+            <tr><td><strong>高通胀</strong></td><td>5%–10%/年</td><td>购买力明显缩水，央行需要干预</td></tr>
+            <tr><td><strong>严重通胀</strong></td><td>10%–100%/年</td><td>经济秩序受冲击，储蓄严重缩水，民众恐慌</td></tr>
+            <tr><td><strong>恶性通胀（超通胀）</strong></td><td>月通胀&gt;50%</td><td>货币体系崩溃，如1923年德国、2008年津巴布韦、近年阿根廷</td></tr>
+          </table>
+        </div>
+        <div class="highlight-box">
+          <strong>为什么CPI不含房价：</strong>CPI统计"居住"类包含的是<strong>租房</strong>支出（房租、物业费、水电燃料），不直接统计购房价格。因为购房在经济学上被视为"投资"而非"消费"。这也是为什么CPI看着不高，但你可能觉得"生活成本明明涨了很多"——因为房价上涨不直接反映在CPI里。这一点是常见误解。
+        </div>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>4. 通胀为什么发生——两大成因</h4>
+        <p><strong>需求拉动型（Demand-Pull）</strong>："太多的钱追逐太少的商品"。当总需求增长超过经济供给能力时，价格被"拉"上去。</p>
+        <ul>
+          <li>典型场景：经济繁荣期，居民收入提高→消费需求大增→商品供给短期跟不上→涨价。</li>
+          <li>货币因素：央行大幅放水（降息+降准+量化宽松），市面流通的钱猛增。</li>
+          <li>经典案例：2020—2021年美国，美联储零利率+无限量QE，2022年CPI飙升至9.1%（40年最高）。</li>
+        </ul>
+        <p><strong>成本推动型（Cost-Push）</strong>："生产成本涨了，企业被迫提价"。当原材料、劳动力等生产成本上升时，企业把增加的成本转嫁到售价上。</p>
+        <ul>
+          <li>典型场景：国际原油暴涨→运输成本上升→所有商品运输加价→终端涨价。</li>
+          <li>外部冲击：战争、自然灾害、供应链中断导致关键原材料供给短缺。</li>
+          <li>经典案例：2022年俄乌冲突→国际能源价格暴涨→欧洲各国通胀飙升（德国CPI一度超10%）。</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>现实中的混合通胀：</strong>大多数国家的通胀不是单一成因，而是需求拉动和成本推动混合作用。比如2022年全球高通胀，既有疫情后需求恢复的拉动因素，又有能源和粮食供给短缺的推动因素，两股力量叠加。
+        </div>
+      </div>
+
+      <div class="knowledge-card">
+        <h4>5. 通胀的影响——谁赢谁输</h4>
+        <p>通胀不是均匀地影响所有人的。它悄悄地重新分配财富：</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>角色</th><th>影响</th><th>原因</th></tr>
+            <tr><td><strong>债务人（借款人）</strong></td><td>受益</td><td>欠的钱是"名义金额"，通胀后还的钱购买力下降了</td></tr>
+            <tr><td><strong>债权人（存款人/出借人）</strong></td><td>受损</td><td>存进银行的钱实际购买力缩水，利息跑不过通胀</td></tr>
+            <tr><td><strong>固定收入者</strong></td><td>受损</td><td>退休金、固定工资名义不变，物价涨了，购买力下降</td></tr>
+            <tr><td><strong>资产持有者</strong></td><td>可能受益</td><td>房产、股票、黄金等资产名义价格可能随通胀上涨</td></tr>
+            <tr><td><strong>政府</strong></td><td>可能受益</td><td>国债是名义金额，通胀稀释了政府债务的实际价值</td></tr>
+          </table>
+        </div>
+        <p><strong>中国的实践</strong>：《中国人民银行法》规定央行政策目标是"保持币值稳定，并以此促进经济增长"。中国长期将CPI涨幅目标设在3%左右。当CPI偏高时，央行可能加息收紧货币；当CPI偏低甚至通缩时，央行可能降息降准刺激需求。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔍 由浅入深案例</h2>
+
+      <div class="case-block">
+        <h4><span class="case-label case-life">生活场景</span> 爷爷存折里的1万块，二十年后"瘦"了多少？</h4>
+        <p><strong>场景</strong>：假设2004年，你爷爷在银行存了1万元定期，当时一碗牛肉面大约5元，1万元能买2000碗牛肉面。二十年后2024年，你取出这笔钱（加上利息可能变成了约1.8万元），但一碗牛肉面已经涨到了20元——1.8万元只能买900碗。从"2000碗"缩水到"900碗"，购买力蒸发了超过一半。</p>
+        <p><strong>分析</strong>：</p>
+        <ul>
+          <li>这就是通胀对"价值储藏"职能的侵蚀：名义数字涨了（利息让存款从1万变成1.8万），但实际购买力缩水了。</li>
+          <li>2004年到2024年，中国CPI累计上涨约50%以上（按国家统计局年度数据估算），"1元钱的购买力"大致缩水了三分之一到一半。</li>
+          <li>银行定期存款利率（约2%—3%）虽然能部分对冲通胀，但实际利率（名义利率-通胀率）可能接近零甚至为负。</li>
+          <li>这也是为什么理财教育强调"不要把所有钱放在银行定存"——需要配置抗通胀资产。</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>启示：</strong>通胀就像"温水煮青蛙"——每年涨几个百分点感觉不痛不痒，但拉长十年二十年看，购买力的缩水是惊人的。理解这一点，你就理解了为什么理财不仅仅是"存钱"，而是要"让钱跑赢通胀"。
+        </div>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-news">真实新闻</span> 阿根廷通胀：一个国家的"钱变废纸"</h4>
+        <p><strong>新闻来源</strong>：新华社，2024年1月12日《阿根廷2023年通胀率达211.4%》；央视新闻，2024年3月《阿根廷通胀居高不下，民众生活困难》；阿根廷国家统计局（INDEC）月度数据</p>
+        <p><strong>事件经过</strong>：阿根廷曾是南美最富裕的国家之一，但长期受高通胀困扰。2023年12月，阿根廷新任总统米莱就职后实施激进经济改革：大幅贬值比索（官方汇率从约400:1贬至800:1）、削减政府补贴、大规模裁撤公共部门。</p>
+        <p><strong>关键数据</strong>（阿根廷国家统计局INDEC / 新华社报道）：</p>
+        <ul>
+          <li><strong>2023年全年通胀率：211.4%</strong>——2023年初100比索能买到的东西，到年底需要约311比索。</li>
+          <li><strong>2023年12月单月CPI环比上涨25.5%</strong>——一个月内物价就涨了四分之一，创1991年以来单月最高。</li>
+          <li><strong>2024年1—3月</strong>月度CPI环比仍在15%—25%区间，年化通胀率一度超250%。</li>
+          <li>民众排队抢购美元、超市物价标签一天一换、工资月月谈却追不上物价——比索在实际生活中几乎丧失了"价值储藏"职能。</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>制度/原理分析：</strong>
+          <ul>
+            <li><strong>需求拉动+成本推动双重叠加</strong>：长期财政赤字→央行大量印钞弥补（需求拉动）；比索贬值→进口商品价格暴涨（成本推动），螺旋上升。</li>
+            <li><strong>货币信任崩塌</strong>：民众预期"钱还会继续贬值"→加速抛售本币、抢购商品和外汇→反过来加剧通胀，形成恶性循环。</li>
+            <li><strong>央行独立性缺失</strong>：阿根廷央行长期被政府要求"配合财政"印钞，无法约束货币供给——这正是"货币供给增长远超经济增长"的极端案例。</li>
+            <li>米莱政府应对：鼓励"美元化"、财政紧缩、利率大幅上调——但短期内民生承受巨大痛苦。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <h4><span class="case-label case-news">真实新闻</span> 中国CPI：温和通胀下的"稳"字诀</h4>
+        <p><strong>新闻来源</strong>：国家统计局，2025年1月9日《2024年12月份居民消费价格指数》新闻发布；新华社，2025年1月9日《2024年全年CPI上涨0.2%》报道</p>
+        <p><strong>事件经过</strong>：中国国家统计局每月定期发布CPI数据。2024年全年，中国CPI比上年上涨0.2%——属于极低通胀/接近持平的水平。</p>
+        <p><strong>关键数据</strong>（国家统计局2025年1月发布）：</p>
+        <ul>
+          <li><strong>2024年全年CPI同比上涨0.2%</strong>——远低于3%的政策调控目标。</li>
+          <li>分月看，2024年2月受春节因素影响CPI一度同比上涨0.7%，但多数月份在0%—0.5%之间波动。</li>
+          <li>分类别看：食品价格同比下降0.6%（猪肉价格低位运行），非食品价格上涨0.5%；服务价格上涨0.7%。</li>
+          <li>对比：同期美国CPI约3%—4%，欧元区约2%—3%，中国0.2%在全球主要经济体中属最低水平之一。</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>制度/原理分析：</strong>
+          <ul>
+            <li><strong>供给充足+需求温和</strong>：工业体系完整、农产品供给稳定，成本推动压力小；消费需求恢复温和，需求拉动不明显。</li>
+            <li><strong>货币政策稳健</strong>：中国人民银行实施"稳健的货币政策"，全年多次降准降息但幅度温和，M2同比增长约7%—8%，与名义GDP增速基本匹配。</li>
+            <li><strong>对比阿根廷的反差</strong>：阿根廷2023年通胀211.4%，中国2024年通胀0.2%——差距上千倍。核心区别在于货币纪律：中国央行有较强独立性、货币供给增长与经济增速匹配；阿根廷央行被财政赤字绑架，被迫超发。</li>
+            <li><strong>低通胀的另一面</strong>：CPI过低也意味着需求偏弱、企业盈利压力增大——宏观政策需在"防通胀"和"防通缩"之间保持平衡。</li>
+          </ul>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>对比维度</th><th>阿根廷（2023）</th><th>中国（2024）</th></tr>
+            <tr><td>全年CPI涨幅</td><td>211.4%</td><td>0.2%</td></tr>
+            <tr><td>货币政策</td><td>被动超发货币弥补赤字</td><td>稳健，M2增速与名义GDP匹配</td></tr>
+            <tr><td>央行独立性</td><td>弱，受财政支配</td><td>较强，依法独立制定货币政策</td></tr>
+            <tr><td>民众行为</td><td>抛售本币、抢购美元</td><td>币值稳定，储蓄和消费正常运转</td></tr>
+            <tr><td>经济效果</td><td>货币功能紊乱、民生痛苦</td><td>物价稳定、购买力基本不变</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📚 延伸阅读推荐</h2>
+
+      <div class="book-card">
+        <div class="title">《经济学原理·宏观》</div>
+        <div class="author">作者：N·格里高利·曼昆（N. Gregory Mankiw）| 出版社：北京大学出版社</div>
+        <div class="chapters">📖 必读章节：第 4 章"货币与通货膨胀"</div>
+        <p style="margin-top:10px;font-size:0.9em;">推荐理由：全球使用最广泛的经济学入门教材之一。第4章专门讲货币与通胀，从货币职能、货币供给、货币数量论到通胀的成本，逻辑清晰、案例丰富、数学推导极少，适合零基础读者。读完这一章，你对货币与通胀的理解就能超过大多数人。</p>
+      </div>
+
+      <div class="book-card">
+        <div class="title">《货币金融学》</div>
+        <div class="author">作者：弗雷德里克·S·米什金（Frederic S. Mishkin）| 出版社：中国人民大学出版社</div>
+        <div class="chapters">📖 推荐章节：第 1—2 章"为什么研究货币、银行和金融市场""货币概览"</div>
+        <p style="margin-top:10px;font-size:0.9em;">推荐理由：货币银行学领域的标杆教材。第1章告诉你货币和银行体系为什么值得研究——通胀、金融危机、货币政策如何影响每个人的生活；第2章系统讲解货币的定义、职能和度量（M0/M1/M2的来龙去脉）。如果曼昆的入门章还"不过瘾"，这两章是最佳进阶。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📋 当日小结</h2>
+      <div class="table-wrap">
+        <table class="summary-table">
+          <tr><td>货币四大职能</td><td>交易媒介、计价单位、价值储藏、支付手段；通胀主要侵蚀"价值储藏"</td></tr>
+          <tr><td>货币供给M0/M1/M2</td><td>M0=现金、M1=随时能花、M2=广义货币；央行用利率、准备金率、公开市场操作调节</td></tr>
+          <tr><td>CPI</td><td>菜篮子温度计，八大类商品加权统计；不含房价（只含房租）</td></tr>
+          <tr><td>通胀两大成因</td><td>需求拉动（钱多货少）+ 成本推动（原料涨价）；现实多为混合型</td></tr>
+          <tr><td>通胀的分配效应</td><td>债务人受益、债权人受损、固定收入者受损、资产持有者可能受益</td></tr>
+          <tr><td>核心案例</td><td>阿根廷2023年通胀211.4%（恶性通胀反面教材）；中国2024年CPI涨0.2%（稳健货币正面案例）</td></tr>
+          <tr><td>核心原理</td><td>MV=PY：货币量增长远超产出增长→物价上涨；央行纪律是币值稳定的根本</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✅ 自测题</h2>
+
+      <div class="qa-item">
+        <div class="q"><strong>1.</strong> 货币的四大职能是什么？通胀主要侵蚀的是哪一项？为什么？</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <strong>货币四大职能：</strong>交易媒介、计价单位、价值储藏、支付手段。<br><br>
+            <strong>通胀主要侵蚀"价值储藏"职能：</strong>价值储藏的前提是"钱的购买力保持稳定"。如果发生通胀，今天存100元能买20碗面，明年可能只能买18碗——名义金额没变，但实际购买力缩水了。这意味着货币作为"储藏价值"的工具失效了。<br><br>
+            <strong>极端情况</strong>：在恶性通胀中（如阿根廷2023年通胀211.4%、津巴布韦2008年），货币的"交易媒介"职能也会被侵蚀——民众不再信任本币，改用外币或以物易物，货币体系实质上崩溃。<br><br>
+            <strong>记忆点</strong>：四大职能"<strong>交计值付</strong>"（交易、计价、价值、支付）；通胀先破"价值储藏"，极端时连"交易媒介"一起破。
+          </div>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="q"><strong>2.</strong> 需求拉动型通胀和成本推动型通胀有什么区别？请各举一个真实案例。</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <table>
+              <tr><th>维度</th><th>需求拉动型</th><th>成本推动型</th></tr>
+              <tr><td>机制</td><td>"钱多货少"——总需求超过总供给</td><td>"原料贵了"——生产成本上升</td></tr>
+              <tr><td>方向</td><td>从消费端拉价格上去</td><td>从生产端推价格上去</td></tr>
+              <tr><td>典型场景</td><td>货币宽松、经济繁荣、财政刺激</td><td>原油涨价、粮食涨价、供应链中断</td></tr>
+            </table>
+            <br>
+            <strong>需求拉动型真实案例——美国2021—2022年通胀：</strong>美联储2020年零利率+无限量QE，大量货币进入市场；同时政府直接向居民发钱。2022年6月美国CPI同比上涨9.1%，创40年新高——典型的"太多钱追逐太少商品"。<br><br>
+            <strong>成本推动型真实案例——2022年欧洲能源通胀：</strong>2022年俄乌冲突后，国际天然气和原油价格暴涨。欧洲高度依赖俄罗斯能源，能源成本传导到全产业链。德国2022年CPI一度突破10%，主要驱动力是能源价格暴涨（成本端推动）。<br><br>
+            <strong>记忆点</strong>：需求拉动是"<strong>拉</strong>"（花钱抢货拉价格）；成本推动是"<strong>推</strong>"（成本涨了推价格）。现实中常混合出现。
+          </div>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="q"><strong>3.</strong> 为什么说"通胀是一种隐形税"？结合阿根廷和中国的对比说明央行独立性和货币纪律的重要性。</div>
+        <details>
+          <summary>点击查看答案</summary>
+          <div class="answer">
+            <strong>"通胀是隐形税"的含义：</strong>通胀不需要政府派人从你口袋里收钱，物价上涨就自动削减了你的购买力——持有货币的人（尤其是存款人、固定收入者）实际财富缩水，而这些"缩水"的部分实质上转移给了债务人（包括政府本身，因为政府国债是名义金额）。<br><br>
+            <table>
+              <tr><th>对比维度</th><th>阿根廷（2023）</th><th>中国（2024）</th></tr>
+              <tr><td>通胀率</td><td>211.4%</td><td>0.2%</td></tr>
+              <tr><td>央行独立性</td><td>极弱，被财政赤字绑架</td><td>较强，依法独立制定货币政策</td></tr>
+              <tr><td>货币纪律</td><td>财政赤字→央行印钞→货币超发→通胀螺旋</td><td>M2增速与名义GDP匹配，稳健货币</td></tr>
+              <tr><td>"隐形税"效果</td><td>民众购买力被"税"走2/3以上</td><td>购买力基本不变，"隐形税"几乎为零</td></tr>
+            </table>
+            <br>
+            <strong>央行独立性的核心意义：</strong><br><br>
+            <ol>
+              <li><strong>阿根廷教训</strong>：央行被财政绑架→被迫印钞→MV=PY中M猛增、Y不增，P暴涨→民众失去信任→通胀预期→抛售本币→汇率贬值→通胀加剧，恶性循环。</li>
+              <li><strong>中国经验</strong>：《中国人民银行法》规定"保持货币币值的稳定，并以此促进经济增长"。央行在货币供给上保持纪律，不因短期财政压力超发货币。2024年CPI仅0.2%，币值高度稳定。</li>
+              <li><strong>制度层面</strong>：许多国家的央行法都强调"央行不应成为财政赤字的买单者"，因为历史反复证明：央行被财政绑架→被迫印钞→恶性通胀→经济崩溃，是一条铁律。</li>
+            </ol>
+            <br>
+            <strong>启示</strong>：币值稳定的根基不在于某个具体操作，而在于"货币纪律"——即央行能否抵挡住"多印钱解决短期问题"的诱惑。这种纪律靠制度保障和长期坚持，一旦失守，修复代价极其巨大。
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="next-preview">
+      <h3>📅 下期预告</h3>
+      <div class="meta">
+        <strong>第 12 课 · 律法 · 民法·侵权与婚姻：权利受侵如何救济</strong><br>
+        核心知识点：侵权归责原则、特殊侵权类型、婚姻家庭编核心规则<br>
+        真实新闻案例：高空抛物真实判决；民法典婚姻家庭编司法解释<br>
+        延伸阅读：程啸《侵权责任法》；最高法民法典婚姻家庭编司法解释
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <p><strong>本课小结：</strong>钱"变薄"不是错觉，而是经济学规律。理解货币四大职能、货币供给M0/M1/M2、CPI度量、通胀两大成因和通胀的财富分配效应——你就掌握了看懂央行政策、国际经济新闻和个人理财决策的底层框架。阿根廷211.4%和中国0.2%的天壤之别，根源就在于"货币纪律"的有无。</p>
+      <p style="margin-top:10px;">本文档为政经法零基础日课第11课内容 | 系列介绍：<a href="./index.html">index.html</a></p>
+    </div>
+  </div>
+</body>
+</html>
